@@ -1,84 +1,83 @@
-function getDataFromServer(number){
-    const http = new XMLHttpRequest();
-    const url = `http://3.17.189.204:5500/api/v1/random-students/${number}`;
-    http.open("GET", url);
-    http.send();
+function getDataFromServer(number) {
+  const http = new XMLHttpRequest();
+  const url = `http://3.17.189.204:5500/api/v1/random-students/${number}`;
+  http.open("GET", url);
+  http.send();
 
-    http.onreadystatechange = () => {
-        const response = JSON.parse(http.responseText);
-        console.log(response);
-        buildStudentsTable(response.students);
-    };
+  http.onreadystatechange = () => {
+    const response = JSON.parse(http.responseText);
+    console.log(response);
+    buildStudentsTable(response.students);
+  };
 }
-window.onload = function(){
-    getDataFromServer(2);      
+window.onload = function () {
+  getDataFromServer(2);
 };
 
-
 function buildStudentsTable(students) {
-    const tableBody = document.getElementById("students-table-tbody")
-   // tableBody.innerHTML = undefined;
-    console.log(tableBody);
-    if (students && students.length > 0) {
-        for (let i = 0; i < students.length; i++) {
-            const student = students[i];
+  const tableBody = document.getElementById("students-table-tbody");
+  tableBody.innerHTML = null;
+  console.log(tableBody);
 
-            const row = document.createElement("tr");
-            row.id = student.id;
+  if (students && students.length > 0) {
+    for (let i = 0; i < students.length; i++) {
+      const student = students[i];
 
-            row.addEventListener('click', () => { });
+      const row = document.createElement("tr");
+      row.id = student.id;
 
-            const numberCell = document.createElement("td");
-            numberCell.innerHTML = i + 1;
-            const firstNameCell = document.createElement("td");
-            firstNameCell.innerHTML = students.firstName;
-            const lastNameCell = document.createElement("td");
-            lastNameCell.innerHTML = students.lastName;
-            const ageCell = document.createElement("td");
-            ageCell.innerHTML = students.age;
-            const genderCell = document.createElement("td");
-            genderCell.innerHTML = students.gender;
-            const hasCarCell = document.createElement("td");
-            const hasCar = students.hasCar ? "Yes" : "No";
-            hasCarCell.innerHTML = hasCar;
+      row.addEventListener("click", () => {});
 
-            row.appendChild(numberCell);
-            row.appendChild(firstNameCell);
-            row.appendChild(lastNameCell);
-            row.appendChild(ageCell);
-            row.appendChild(genderCell);
-            row.appendChild(hasCarCell);
+      const numberCell = document.createElement("td");
+      numberCell.innerHTML = i + 1;
+      const firstNameCell = document.createElement("td");
+      firstNameCell.innerHTML = student.firstName;
+      const lastNameCell = document.createElement("td");
+      lastNameCell.innerHTML = student.lastName;
+      const ageCell = document.createElement("td");
+      ageCell.innerHTML = student.age;
+      const genderCell = document.createElement("td");
+      genderCell.innerHTML = student.gender;
+      const hasCarCell = document.createElement("td");
+      const hasCar = student.hasCar ? "Yes" : "No";
+      hasCarCell.innerHTML = hasCar;
 
-            tableBody.appendChild(row);
-        }
+      row.appendChild(numberCell);
+      row.appendChild(firstNameCell);
+      row.appendChild(lastNameCell);
+      row.appendChild(ageCell);
+      row.appendChild(genderCell);
+      row.appendChild(hasCarCell);
+
+      tableBody.appendChild(row);
     }
-    else {
-        tableBody.innerHTML = 'No data';
-    }
+  } else {
+    tableBody.innerHTML = "No data";
+  }
 }
 
 function buildStudentsProfile(student) {
-    const studentProfileContainer = document.getElementById("student-profile-container");
-    studentProfileContainer.innerHTML = null;
+  const studentProfileContainer = document.getElementById(
+    "student-profile-container"
+  );
+  studentProfileContainer.innerHTML = null;
 
-    if(student){
-        const studentImg = document.createElement("img");
-        studentImg.alt = "studentImage";
-        studentImg.src = "student.profileImageUrl";
-        studentImg.style.width = '200px';
-        studentImg.style.height = '200px';
-        studentImg.style.objectFit = "cover";
+  if (student) {
+    const studentImg = document.createElement("img");
+    studentImg.alt = "studentImage";
+    studentImg.src = "student.profileImageUrl";
+    studentImg.style.width = "200px";
+    studentImg.style.height = "200px";
+    studentImg.style.objectFit = "cover";
 
-        const studentName = `${student.firstName} ${student.lastName}`;
-        const nameContainer = document.createElement("div");
-        nameContainer.innerHTML = studentName;
-        studentProfileContainer.appendChild(nameContainer);
-    }
-    else{
-        studentProfileContainer.innerHTML = "No data";
-    }
+    const studentName = `${student.firstName} ${student.lastName}`;
+    const nameContainer = document.createElement("div");
+    nameContainer.innerHTML = studentName;
+    studentProfileContainer.appendChild(nameContainer);
+  } else {
+    studentProfileContainer.innerHTML = "No data";
+  }
 }
-
 
 /*document.querySelector('#search-txt').oninput = function() {
     let val = this.value.trim();
