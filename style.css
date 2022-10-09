@@ -5,14 +5,43 @@ background-color: rgb(233, 233, 255);
 text-align: center;
 }
 #containerDiv1{
-    display: inline-block;
+    float:left; width:30%;
+    background-color: rgb(173, 132, 132);
 }
-#containerDiv2{
-    display: inline-block;
+.divdiv {
+    padding: 20px;
+    font-size: 25px;
+    font-family: Tahoma;
+    color:rgb(221, 26, 26);
 }
-.thead{
-    background-color: blue;
+#student-profile-container{
+    float:left; width:27%;
+    border: 1px solid black;
 }
-.students-table thead{
-    background-color: brown;
+.students-table{
+    font-family: tahoma;
+    font-size: 15px;
+    color:rgb(221, 26, 26);
+    background-color: rgb(233, 233, 255);
+    font-weight: bold;
+    text-align: center;
+}
+#students-table-tbody{
+    font-family: tahoma;
+    font-size: 15px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-weight:100;
+    text-align: left;
+}
+.search-txt{
+    background-color: aquamarine;
+    font-family: tahoma;
+    font-size: 15px;
+}
+mark{
+    background:rgb(153, 0, 255);
+}
+.elastic td.hide {
+    display:none;
 }
