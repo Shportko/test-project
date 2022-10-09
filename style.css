@@ -1,0 +1,18 @@
+
+.h1{
+color:rgb(221, 26, 26);
+background-color: rgb(233, 233, 255);
+text-align: center;
+}
+#containerDiv1{
+    display: inline-block;
+}
+#containerDiv2{
+    display: inline-block;
+}
+.thead{
+    background-color: blue;
+}
+.students-table thead{
+    background-color: brown;
+}
